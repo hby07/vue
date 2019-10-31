@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>modelGrammer</title>
+</head>
+
+<body>
+    <div id="model">
+        <span>{{a}}</span><br/>
+        <span v-once>{{a}}</span><br/>
+        <input v-model='a'>
+        <hr/>
+        <p>{{b}}</p>
+        <p v-html='b'>{{b}}</p>
+        <button v-bind:disabled='c'>click</button>
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: '#model',
+        data: {
+            a: 'cancancan',
+            b: '<span v-html="rawHtml"></span>',
+            c:false
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>case</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ foo }}</p>
+        <!-- 这里的 `foo` 不会更新！ -->
+        <button v-on:click="foo = 'baz'">Change it</button>
+    </div>
+</body>
+<script>
+    var obj = {
+        foo: 'bar',
+        a: '111'
+    }
+
+    //该函数会阻止修改现有的属性，响应系统也就无法追踪变化了
+    // Object.freeze(obj)
+
+    new Vue({
+        el: '#app',
+        data: obj,
+        created: function () {
+            // `this` 指向 vm 实例
+            console.log('a is: ' + this.a)
+        }
+    })
+</script>
+
+</html>
